@@ -3,7 +3,6 @@ pipeline {
        ID_DOCKER = "${ID_DOCKER_PARAMS}"
        IMAGE_NAME = "ic-webapp"
        IMAGE_TAG = "latest"
-       CONTAINER_PORT = "80"
        PORT_EXPOSED = "8080" 
        APP_NAME = "ic-webapp"
        STG_API_ENDPOINT = "ip10-0-0-3-cen1q8gmjkegg872cd0g-1993.direct.docker.labs.eazytraining.fr"
@@ -32,7 +31,7 @@ pipeline {
                  sh '''
                     echo "Clean Environment"
                     docker rm -f $IMAGE_NAME || echo "container does not exist"
-                    docker run --name $IMAGE_NAME -d -p $INTERNAL_PORT:$PORT_EXPOSED ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p $PORT_EXPOSED:$INTERNAL_PORT ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }

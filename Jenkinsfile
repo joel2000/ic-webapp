@@ -43,7 +43,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl -v 172.17.0.1 | grep -i "200"
+                    curl -v 172.17.0.1 | grep -q "IC GROUP"
                 '''
               }
            }
